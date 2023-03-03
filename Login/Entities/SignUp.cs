@@ -1,4 +1,6 @@
-﻿namespace Login.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Login.Entities;
 
 public class SignUp
 {

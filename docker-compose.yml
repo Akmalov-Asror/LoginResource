@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  login_blazor:
+    image: login_blazor
+    container_name: login_blazor
+    ports:
+      - "2005:80"
+    build:
+      context: LoginMudBlazor
+      dockerfile: DockerFile
+
+  login_api:
+    image: login_api
+    container_name: login_api
+    ports: 
+      - "1005:80"
+    build:
+      context: Login
+      dockerfile: DockerFile
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge 

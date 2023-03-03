@@ -20,7 +20,7 @@
                                     <div class="text-center">
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                                              style="width: 185px;" alt="logo">
-                                        <h4 class="mt-1 mb-5 pb-1">We are The IlmHub Team</h4>
+                                        <h4 class="mt-1 mb-5 pb-1">Asror Akmalov</h4>
                                     </div>
 
                                     <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
@@ -36,7 +36,7 @@
                                                                       @bind-Value="model.LastName" For="@(() => model.LastName)" InputType="InputType.Text" />
 
                                                         <MudTextField Class="mt-3" @bind-Value="model.Password" For="@(() => model.Password)" Label="Password" Variant="Variant.Filled" 
-                                                                      InputType="InputType.Password" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password" />
+                                                                      InputType="PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password" />
 
                                                         <MudTextField Label="Email" Class="mt-3"
                                                                       @bind-Value="model.Email" For="@(() => model.Email)" InputType="InputType.Email" />
@@ -82,7 +82,6 @@
 @code {
     SignUpDto model = new SignUpDto();
     string? error = null;
-    
 
     private async Task OnValidSubmit(EditContext context)
     {
@@ -117,5 +116,10 @@
             PasswordInputIcon = Icons.Material.Filled.Visibility;
             PasswordInput = InputType.Text;
         }
+    }
+
+    void PasswordCheck()
+    {
+
     }
 }

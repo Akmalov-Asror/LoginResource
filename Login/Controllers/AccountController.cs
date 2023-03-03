@@ -22,7 +22,7 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("sign-Up")]
-    public IActionResult SignUp(SignUpDto signUpDto)
+    public async Task<IActionResult> SignUp(SignUpDto signUpDto)
     {
         var user = _context.SignUpSet.Any(u => u.Name == signUpDto.Name);
 
@@ -30,11 +30,9 @@ public class AccountController : ControllerBase
             return BadRequest("Uje user bor");
 
         var passwordhash = HashPassword(signUpDto.Password);
-        var resultValidator = _validator.Validate(signUpDto);
-        if (resultValidator == null)
-        {
-            return BadRequest();
-        }
+        var result = await _validator.ValidateAsync(signUpDto);
+        if (!result.IsValid)
+            return BadRequest(result.Errors);
         var data = new SignUp()
         {
             LastName = signUpDto.LastName,

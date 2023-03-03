@@ -10,7 +10,7 @@ public class SignUpValidator : AbstractValidator<SignUpDto>
         RuleFor(signUpDto => signUpDto.Password)
             .MinimumLength(8)
             .NotEmpty()
-            .Matches(@"^(?=.*[A-Z,a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")
+            .Matches(@"^[a-zA-Z0-9]+$")
             .WithMessage("Minimum length 8, password must contain at least one letter, one number and one special character.");
     }
 }
